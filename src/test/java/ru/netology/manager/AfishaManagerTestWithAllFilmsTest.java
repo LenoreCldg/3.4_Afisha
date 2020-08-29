@@ -22,7 +22,6 @@ public class AfishaManagerTestWithAllFilmsTest {
 
 
 
-    @BeforeEach
     public void showsUp() {
         manager.add(first);
         manager.add(second);
