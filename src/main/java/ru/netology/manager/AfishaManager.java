@@ -5,7 +5,17 @@ import ru.netology.domain.DisplayFilm;
 
 public class AfishaManager {
     @Getter
+    private int quantityFilms = 10;
     private DisplayFilm[] films = new DisplayFilm[0];
+
+    public AfishaManager() {
+    }
+
+    public AfishaManager(int quantityFilms) {
+        if (quantityFilms > 0) {
+            this.quantityFilms = quantityFilms;
+        }
+    }
 
     public void add(DisplayFilm film) {
         int length = films.length + 1;
@@ -16,25 +26,13 @@ public class AfishaManager {
         films = tmp;
     }
 
-    public DisplayFilm[] getAll() {
-        DisplayFilm[] result = new DisplayFilm[films.length];
+    public DisplayFilm[] getShowLast() {
+        int lengthDisplayFilm = Math.min(films.length, quantityFilms);
+        DisplayFilm[] result = new DisplayFilm[lengthDisplayFilm];
         for (int i = 0; i < result.length; i++) {
             int index = result.length - i - 1;
             result[i] = films[index];
         }
         return result;
-    }
-
-    public void removeById(int id) {
-        int length = films.length - 1;
-        DisplayFilm[] tmp = new DisplayFilm[length];
-        int index = 0;
-        for (DisplayFilm film : films) {
-            if (film.getId() != id) {
-                tmp[index] = film;
-                index++;
-            }
-        }
-        films = tmp;
     }
 }
