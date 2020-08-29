@@ -32,7 +32,7 @@ public class AfishaManager {
         int lengthDisplayFilm = Math.min(films.length, quantityFilms);
         DisplayFilm[] result = new DisplayFilm[lengthDisplayFilm];
         for (int i = 0; i < result.length; i++) {
-            int index = result.length - i - 1;
+            int index = films.length - i - 1;
             result[i] = films[index];
         }
         return result;
