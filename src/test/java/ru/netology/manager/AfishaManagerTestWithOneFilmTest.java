@@ -23,8 +23,7 @@ class AfishaManagerTestWithOneFilmTest {
 
     @BeforeEach
     public void showFilm(){
-        manager.add(first);
-    }
+       }
 
     @Test
     public void shouldDisplayOneFilm(){

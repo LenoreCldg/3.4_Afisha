@@ -34,22 +34,11 @@ public class AfishaManagerTestWithAllFilmsTest {
 
     @BeforeEach
     public void showsUp() {
-        manager.add(first);
-        manager.add(second);
-        manager.add(third);
-        manager.add(fourth);
-        manager.add(fifth);
-        manager.add(sixth);
-        manager.add(seventh);
-        manager.add(eight);
-        manager.add(ninth);
-        manager.add(tenth);
     }
 
 
     @Test
     public void shouldAddAllFilms() {
-        manager = new AfishaManager(repository);
         showsUp();
         DisplayFilm[] returned = {first, second, third, fourth, fifth, sixth, seventh, eight, ninth, tenth};
         doReturn(returned).when(repository).findAll();
@@ -62,7 +51,6 @@ public class AfishaManagerTestWithAllFilmsTest {
 
     @Test
     public void shouldAddLessFilms() {
-        manager = new AfishaManager(5, repository);
         showsUp();
         DisplayFilm[] returned = {first, second, third, fourth, fifth};
         doReturn(returned).when(repository).findAll();
