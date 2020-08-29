@@ -6,7 +6,7 @@ import ru.netology.domain.DisplayFilm;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AfishaManagerTestWithOneFilm {
+class AfishaManagerTestWithOneFilmTest {
     private AfishaManager manager = new AfishaManager();
     private DisplayFilm first = new DisplayFilm(1, 1, "Бладшот", "Боевик", false);
 

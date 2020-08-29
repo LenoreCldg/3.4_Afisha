@@ -6,7 +6,7 @@ import ru.netology.domain.DisplayFilm;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class AfishaManagerTestWithAllFilms {
+public class AfishaManagerTestWithAllFilmsTest {
     private AfishaManager manager = new AfishaManager();
 
     private DisplayFilm first = new DisplayFilm(1, 1, "Бладшот", "Боевик", false);
@@ -54,7 +54,7 @@ public class AfishaManagerTestWithAllFilms {
         showsUp();
 
         DisplayFilm[] actual = manager.getShowLast();
-        DisplayFilm[] expected = new DisplayFilm[]{fifth, fourth, third, second, first};
+        DisplayFilm[] expected = new DisplayFilm[]{tenth, ninth, eight, seventh, sixth};
 
         assertArrayEquals(expected, actual);
     }
