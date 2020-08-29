@@ -2,12 +2,23 @@ package ru.netology.manager;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import ru.netology.domain.DisplayFilm;
+import ru.netology.repository.AfishaRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.doReturn;
 
+@ExtendWith(MockitoExtension.class)
 public class AfishaManagerTestWithAllFilms {
-    private AfishaManager manager = new AfishaManager();
+
+    @Mock
+    AfishaRepository repository;
+    @InjectMocks
+    private AfishaManager manager;
 
     private DisplayFilm first = new DisplayFilm(1, 1, "Бладшот", "Боевик", false);
     private DisplayFilm second = new DisplayFilm(2, 2, "Вперёд", "Мультфильм", false);
@@ -19,7 +30,6 @@ public class AfishaManagerTestWithAllFilms {
     private DisplayFilm eight = new DisplayFilm(8, 8, "ИП Пирогова", "Комедия", true);
     private DisplayFilm ninth = new DisplayFilm(9, 9, "Ведьмак", "Ужасы", true);
     private DisplayFilm tenth = new DisplayFilm(10, 10, "Человек - паук", "Фантастика", true);
-
 
 
     @BeforeEach
@@ -39,8 +49,10 @@ public class AfishaManagerTestWithAllFilms {
 
     @Test
     public void shouldAddAllFilms() {
-        manager = new AfishaManager();
+        manager = new AfishaManager(repository);
         showsUp();
+        DisplayFilm[] returned = {first, second, third, fourth, fifth, sixth, seventh, eight, ninth, tenth};
+        doReturn(returned).when(repository).findAll();
 
         DisplayFilm[] actual = manager.getShowLast();
         DisplayFilm[] expected = new DisplayFilm[]{tenth, ninth, eight, seventh, sixth, fifth, fourth, third, second,first};
@@ -50,14 +62,15 @@ public class AfishaManagerTestWithAllFilms {
 
     @Test
     public void shouldAddLessFilms() {
-        manager = new AfishaManager(5);
+        manager = new AfishaManager(5, repository);
         showsUp();
+        DisplayFilm[] returned = {first, second, third, fourth, fifth};
+        doReturn(returned).when(repository).findAll();
 
         DisplayFilm[] actual = manager.getShowLast();
         DisplayFilm[] expected = new DisplayFilm[]{fifth, fourth, third, second, first};
 
         assertArrayEquals(expected, actual);
     }
-
 
 }
