@@ -12,10 +12,8 @@ public class AfishaManager {
     }
 
     public AfishaManager(int quantityFilms) {
-        if (quantityFilms > 0) {
-            this.quantityFilms = quantityFilms;
+             this.quantityFilms = quantityFilms;
         }
-    }
 
     public void add(DisplayFilm film) {
         int length = films.length + 1;
